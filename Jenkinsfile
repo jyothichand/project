@@ -2,14 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('validate') {
             steps {
-                echo 'Building..'
+                echo 'validating..'
+		sh 'pwd'
+		sh 'mvn compile'
             }
         }
-        stage('Test') {
+        stage('unit testing') {
             steps {
                 echo 'Testing..'
+		sh 'pwd'
+		sh 'mvn test'
             }
         }
         stage('Deploy') {
