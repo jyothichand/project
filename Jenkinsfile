@@ -16,10 +16,22 @@ pipeline {
 		sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('build') {
             steps {
-                echo 'Deploying....'
+                echo 'building....'
+		sh 'pwd'
+		sh 'mvn clean package'
 	
+            }
+        }
+	stage('sonar-test') {
+            steps {
+                echo "performiong sonar analysis"'
+		sh 'pwd'
+		sh 'mvn sonar:sonar \
+  -Dsonar.host.url=http://3.215.133.23:9000 \
+  -Dsonar.login=c06b5984bea0fa6180065bce325b1b376611ecf5
+
             }
         }
     }
