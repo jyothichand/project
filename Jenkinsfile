@@ -24,16 +24,6 @@ pipeline {
 	
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-		sh 'pwd'
-		sshagent(['tomcat']) {
- 		   // some block
-}
-            }
-
-
-    }
+        
 }
 
